@@ -10,6 +10,13 @@ describe('SongInfo', () => {
       declarations: [SongInfo]
     })
 
+    fixture = TestBed.createComponent(SongInfo);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
+
+    it('should create', () => {
+        expect(component).toBeTruthy();
     
   });
 });

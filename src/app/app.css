@@ -10,8 +10,9 @@
     overflow: hidden; 
 }
 
-router-outlet {
-    flex-grow: 1; 
-    width: 100%;
-   
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    height: 100vh;
 }

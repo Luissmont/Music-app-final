@@ -1,10 +1,14 @@
 * {
     padding: 0;
     margin: 0;
+
+    font-family: 'Montserrat';
 }
 
 body {
-    overflow: hidden; 
+    width: 100vw;
+    height: 100vh;
+    background-color: #39393A;
 }
 
 ::-webkit-scrollbar {

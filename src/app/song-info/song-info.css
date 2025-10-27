@@ -3,7 +3,6 @@
     margin: 0;
 }
 
-/* --- ESTILOS MODO CARD (PARA PLAYLIST) --- */
 :host(.card){
     width: 100%;
     display: flex;

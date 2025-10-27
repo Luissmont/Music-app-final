@@ -1,5 +1,7 @@
-<router-outlet/>
+<div class="container">
+    <router-outlet/>
 
-@if (showAudioController$ | async) {
-    <app-audio-controller></app-audio-controller>
-}
+    @if (showAudioController$ | async) {
+        <app-audio-controller></app-audio-controller>
+    }
+</div>

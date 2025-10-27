@@ -1,0 +1,21 @@
+<header id="player-header">
+    <app-search-bar></app-search-bar>
+</header>
+@if (playerData$ | async; as player_data) {
+    <div id="main">
+        <div id="current-song-section">
+            <app-song-info 
+                [song]="player_data.current_track" 
+                [cover]="player_data.cover" 
+                displayMode="main">
+            </app-song-info>
+        </div>
+        
+        <div id="queue-section">
+            <app-playlist 
+                [playlist]="player_data.queue" 
+                [cover]="player_data.cover">
+            </app-playlist>
+        </div>
+    </div>
+}

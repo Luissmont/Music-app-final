@@ -1,0 +1,58 @@
+<div class="search-results-container">
+
+    <span class="close-button" [routerLink]="['/']">
+        <i class="fa-solid fa-xmark"></i>
+    </span>
+
+    @if (results$ | async; as results) {
+        <h1>Resultados de Búsqueda para: "{{ (_route.params | async)?.['query'] }}"</h1>
+        
+        <div class="full-results-content">
+            
+            @if (results.artists?.items.length > 0) {
+                <h2>Artistas</h2>
+                @for (artist of results.artists.items; track artist.id) {
+                    <div class="list-item" (click)="selectContent('4aawyAB9vmqN3uQ7FjRGTy')">
+                        <img [src]="getCover(artist.images)" alt="Artista" class="list-cover circle-cover">
+                        <div class="list-details">
+                            <p class="list-title">{{artist.name}}</p>
+                            <p class="list-artist">Artista</p>
+                        </div>
+                        <span class="type-label album-label">ARTISTA</span>
+                    </div>
+                }
+            }
+
+            @if (results.albums?.items.length > 0) {
+                <h2>Álbumes</h2>
+                @for (album of results.albums.items; track album.id) {
+                    <div class="list-item" (click)="selectContent(album.id)">
+                        <img [src]="getCover(album.images)" alt="Album" class="list-cover">
+                        <div class="list-details">
+                            <p class="list-title">{{album.name}}</p>
+                            <p class="list-artist">{{album.artists.at(0)?.name}}</p>
+                        </div>
+                        <span class="type-label album-label">ÁLBUM</span>
+                    </div>
+                }
+            }
+
+            @if (results.tracks?.items.length > 0) {
+                <h2>Canciones</h2>
+                @for(track of results.tracks?.items; track track.id){
+                    <div class="list-item" (click)="selectContent(track.album?.id)">
+                        <img [src]="getCover(track.album?.images)" alt="Canción" class="list-cover">
+                        <div class="list-details">
+                            <p class="list-title">{{track.name}}</p>
+                            <p class="list-artist">{{track.artists.at(0)?.name}}</p>
+                        </div>
+                        <span class="type-label track-label">CANCIÓN</span>
+                    </div>
+                }
+            }
+        </div>
+
+    } @else {
+        <p class="no-results">Escribe algo en la barra de búsqueda para empezar.</p>
+    }
+</div>

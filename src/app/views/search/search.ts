@@ -25,7 +25,7 @@ export class Search {
     this.results$ = this.route.params.pipe(
       switchMap(params => {
         this.query = params['query'];
-        return this.spotify.search(this.query);
+        return this.spotify.fullSearch(this.query);
       })
     );
   }
@@ -33,6 +33,10 @@ export class Search {
   selectAlbum(albumId: string): void {
     this.playerState.setCurrentAlbum(albumId);
     this.router.navigate(['/']);
+  }
+
+  selectArtist(artistId: string): void {
+    this.router.navigate(['/artist', artistId]);
   }
 
   getCover(images: any[]): string {

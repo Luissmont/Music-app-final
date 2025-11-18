@@ -1,5 +1,7 @@
 <div class="playlist-container">
-  <h2>Lista de Reproducción</h2>
+  @if (albumName$ | async; as albumName) {
+    <h2>{{ albumName }}</h2>
+  }
 
   @if (albumCover$ | async; as cover) {
     <div class="album-cover">

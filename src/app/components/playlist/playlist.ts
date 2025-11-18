@@ -13,14 +13,19 @@ import { Observable, map } from 'rxjs';
 export class Playlist {
   tracks$: Observable<any[]>;
   albumCover$: Observable<string>;
+  albumName$: Observable<string>;
 
   constructor(public playerState: PlayerStateService) {
     this.tracks$ = this.playerState.currentAlbum$.pipe(
-      map(album => album.tracks?.items || [])
+      map(album => album?.tracks?.items || [])
     );
 
     this.albumCover$ = this.playerState.currentAlbum$.pipe(
-      map(album => album.images?.[0]?.url || '')
+      map(album => album?.images?.[0]?.url || '')
+    );
+
+    this.albumName$ = this.playerState.currentAlbum$.pipe(
+      map(album => album?.name || '')
     );
   }
 }

@@ -21,7 +21,7 @@ export class Home {
   ) {
     this.currentTrack$ = this.playerState.currentAlbumId$.pipe(
       switchMap(albumId => this.spotify.getAlbum(albumId)),
-      map(album => album.tracks.items[0])
+      map(album => album?.tracks?.items?.[0])
     );
   }
 }

@@ -27,13 +27,31 @@ export class SpotifyService {
     return this.http.get(`${environment.API_URL}/albums/${id}`);
   }
 
-  search(query: string): Observable<any> {
+  quickSearch(query: string): Observable<any> {
     const params = new HttpParams()
       .set('q', query)
-      .set('type', 'album,track')
+      .set('type', 'album,track,artist')
+      .set('limit', 5)
+      .set('market', 'ES');
+
+    return this.http.get(`${environment.API_URL}/search`, { params });
+  }
+
+  fullSearch(query: string): Observable<any> {
+    const params = new HttpParams()
+      .set('q', query)
+      .set('type', 'album,track,artist')
       .set('limit', 20)
       .set('market', 'ES');
 
     return this.http.get(`${environment.API_URL}/search`, { params });
+  }
+
+  getArtistAlbums(artistId: string): Observable<any> {
+    const params = new HttpParams()
+      .set('limit', 50)
+      .set('market', 'ES');
+
+    return this.http.get(`${environment.API_URL}/artists/${artistId}/albums`, { params });
   }
 }

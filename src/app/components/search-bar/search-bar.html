@@ -1,10 +1,61 @@
-<div class="search-bar">
-  <input 
-    type="text" 
-    [formControl]="searchControl" 
-    placeholder="¿Qué quieres escuchar?"
-    (keyup.enter)="onEnter()">
-  <span class="search-icon">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </span>
+<div class="search-container" #searchContainer>
+  <div class="search-bar">
+    <input 
+      type="text" 
+      [formControl]="searchControl" 
+      placeholder="¿Qué quieres escuchar?"
+      (keyup.enter)="onEnter()">
+    <span class="search-icon">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </span>
+  </div>
+
+  @if (showSuggestions && suggestions) {
+    <div class="suggestions-dropdown">
+      @if (suggestions.artists?.items?.length > 0) {
+        <div class="suggestions-section">
+          <h3>Artistas</h3>
+          @for (artist of suggestions.artists.items; track artist.id) {
+            <div class="suggestion-item" (click)="selectArtist(artist.id)">
+              <img [src]="getCover(artist.images)" class="item-cover circle">
+              <div class="item-info">
+                <p class="item-name">{{ artist.name }}</p>
+                <p class="item-type">Artista</p>
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+      @if (suggestions.albums?.items?.length > 0) {
+        <div class="suggestions-section">
+          <h3>Álbumes</h3>
+          @for (album of suggestions.albums.items; track album.id) {
+            <div class="suggestion-item" (click)="selectAlbum(album.id)">
+              <img [src]="getCover(album.images)" class="item-cover">
+              <div class="item-info">
+                <p class="item-name">{{ album.name }}</p>
+                <p class="item-type">{{ album.artists[0]?.name }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+      @if (suggestions.tracks?.items?.length > 0) {
+        <div class="suggestions-section">
+          <h3>Canciones</h3>
+          @for (track of suggestions.tracks.items; track track.id) {
+            <div class="suggestion-item" (click)="selectAlbum(track.album?.id)">
+              <img [src]="getCover(track.album?.images)" class="item-cover">
+              <div class="item-info">
+                <p class="item-name">{{ track.name }}</p>
+                <p class="item-type">{{ track.artists[0]?.name }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  }
 </div>

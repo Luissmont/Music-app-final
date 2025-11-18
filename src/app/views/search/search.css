@@ -38,10 +38,16 @@
   background-color: #333;
 }
 
-.result-card img {
+.card-cover {
   width: 100%;
   border-radius: 6px;
   margin-bottom: 10px;
+}
+
+.card-cover.circle {
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
 .card-info h3 {
@@ -77,7 +83,7 @@
   background-color: #333;
 }
 
-.track-item img {
+.track-cover {
   width: 50px;
   height: 50px;
   border-radius: 4px;

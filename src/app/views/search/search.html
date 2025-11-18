@@ -2,13 +2,30 @@
   <h1>Resultados para: "{{ query }}"</h1>
 
   @if (results$ | async; as results) {
-    @if (results.albums?.items.length > 0) {
+    @if (results.artists?.items?.length > 0) {
+      <section class="results-section">
+        <h2>Artistas</h2>
+        <div class="results-grid">
+          @for (artist of results.artists.items; track artist.id) {
+            <div class="result-card" (click)="selectArtist(artist.id)">
+              <img [src]="getCover(artist.images)" alt="Artist" class="card-cover circle">
+              <div class="card-info">
+                <h3>{{ artist.name }}</h3>
+                <p>Artista</p>
+              </div>
+            </div>
+          }
+        </div>
+      </section>
+    }
+
+    @if (results.albums?.items?.length > 0) {
       <section class="results-section">
         <h2>Álbumes</h2>
         <div class="results-grid">
           @for (album of results.albums.items; track album.id) {
             <div class="result-card" (click)="selectAlbum(album.id)">
-              <img [src]="getCover(album.images)" alt="Album">
+              <img [src]="getCover(album.images)" alt="Album" class="card-cover">
               <div class="card-info">
                 <h3>{{ album.name }}</h3>
                 <p>{{ album.artists[0]?.name }}</p>
@@ -19,13 +36,13 @@
       </section>
     }
 
-    @if (results.tracks?.items.length > 0) {
+    @if (results.tracks?.items?.length > 0) {
       <section class="results-section">
         <h2>Canciones</h2>
         <div class="track-list">
           @for (track of results.tracks.items; track track.id) {
             <div class="track-item" (click)="selectAlbum(track.album?.id)">
-              <img [src]="getCover(track.album?.images)" alt="Track">
+              <img [src]="getCover(track.album?.images)" alt="Track" class="track-cover">
               <div class="track-details">
                 <p class="track-name">{{ track.name }}</p>
                 <p class="track-artist">{{ track.artists[0]?.name }}</p>

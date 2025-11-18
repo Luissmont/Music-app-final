@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SpotifyService } from './services/spotify.service';
-import { CookiesStorageService } from './services/cookies-storage.service';
+import { CookiesStorageService } from './services/cookies-state.service';
 
 @Component({
   selector: 'app-root',

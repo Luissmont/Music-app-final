@@ -1,0 +1,25 @@
+<div class="playlist-container">
+  <h2>Lista de Reproducción</h2>
+
+  @if (albumCover$ | async; as cover) {
+    <div class="album-cover">
+      <img [src]="cover" alt="Album">
+    </div>
+  }
+
+  <div class="tracks">
+    @if (tracks$ | async; as tracks) {
+      @for (track of tracks; track track.id) {
+        <div class="track-item">
+          <div class="track-number">{{ $index + 1 }}</div>
+          <div class="track-info">
+            <p class="track-name">{{ track.name }}</p>
+            <p class="track-artist">{{ track.artists[0]?.name }}</p>
+          </div>
+        </div>
+      } @empty {
+        <p class="no-tracks">No hay canciones disponibles</p>
+      }
+    }
+  </div>
+</div>

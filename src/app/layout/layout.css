@@ -1,0 +1,39 @@
+.layout-container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 70px 1fr 100px;
+  background-color: #1e1e1f;
+  overflow: hidden;
+}
+
+.navbar {
+  background-color: #1a1e24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  overflow: hidden;
+}
+
+.main-content {
+  overflow-y: auto;
+  background-color: #222831;
+}
+
+.sidebar {
+  background-color: #1a1e24;
+  border-left: 1px solid #2a2a2a;
+  overflow-y: auto;
+}
+
+.audio-controller {
+  background-color: #333333;
+  border-top: 1px solid #2a2a2a;
+}

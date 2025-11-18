@@ -1,0 +1,10 @@
+<div class="search-bar">
+  <input 
+    type="text" 
+    [formControl]="searchControl" 
+    placeholder="¿Qué quieres escuchar?"
+    (keyup.enter)="onEnter()">
+  <span class="search-icon">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </span>
+</div>

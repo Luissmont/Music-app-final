@@ -1,0 +1,17 @@
+<div class="controller-container">
+  <input type="range" class="progress-bar" min="0" max="100" value="0">
+  
+  <div class="controls">
+    <button class="control-btn">
+      <i class="fa-solid fa-backward-step"></i>
+    </button>
+    
+    <button class="control-btn play-btn" (click)="togglePlay()">
+      <i [class]="isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play'"></i>
+    </button>
+    
+    <button class="control-btn">
+      <i class="fa-solid fa-forward-step"></i>
+    </button>
+  </div>
+</div>

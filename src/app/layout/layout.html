@@ -1,0 +1,19 @@
+<div class="layout-container">
+  <nav class="navbar">
+    <app-search-bar></app-search-bar>
+  </nav>
+
+  <div class="content-wrapper">
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+
+    <aside class="sidebar">
+      <app-playlist></app-playlist>
+    </aside>
+  </div>
+
+  <footer class="audio-controller">
+    <app-audio-controller></app-audio-controller>
+  </footer>
+</div>

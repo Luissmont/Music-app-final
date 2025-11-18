@@ -1,0 +1,13 @@
+<div class="home-container">
+  @if (currentTrack$ | async; as track) {
+    <div class="current-track">
+      <div class="track-cover">
+        <img [src]="(playerState.currentAlbum$ | async)?.images[0]?.url" alt="Album Cover">
+      </div>
+      <div class="track-info">
+        <h1>{{ track.name }}</h1>
+        <h2>{{ track.artists[0]?.name }}</h2>
+      </div>
+    </div>
+  }
+</div>
